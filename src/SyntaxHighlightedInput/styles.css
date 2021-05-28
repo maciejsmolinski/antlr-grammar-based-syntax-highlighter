@@ -1,27 +1,44 @@
+:root {
+  --syntax-highlighted-input-background: rgb(40, 45, 60);
+}
+
 .SyntaxHighlightedInput {
-  --syntax-highlighted-input-border: #ccc;
+  background: var(--syntax-highlighted-input-background);
+  box-sizing: border-box;
+  width: 600px;
+  height: 240px;
+  padding: 20px;
+}
+
+.SyntaxHighlightedInput__container {
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
 .SyntaxHighlightedInput__input,
 .SyntaxHighlightedInput__output {
-  border: 1px solid var(--syntax-highlighted-input-border);
   background: transparent;
-  white-space: pre-wrap;
-  width: 600px;
-  height: 240px;
-  padding: 10px;
+  border: none;
   font-family: monospace;
-  position: absolute;
-  top: 10px;
-  overflow-y: auto;
-  line-height: 20px;
   font-size: 16px;
+  line-height: 20px;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  white-space: pre-wrap;
 }
 
 .SyntaxHighlightedInput__input {
   color: transparent;
   caret-color: #ccc;
   resize: none;
+  appearance: none;
   /* z-index: 1; */
 }
 

@@ -21,26 +21,29 @@ export default function SyntaxHighlightedInput({ code }) {
 
   return (
     <div className="SyntaxHighlightedInput">
-      <textarea
-        rows="10"
-        cols="60"
-        className="SyntaxHighlightedInput__input"
-        spellCheck={false}
-        value={value}
-        onChange={({ target }) => setValue(target.value)}
-        onScroll={({ target }) =>
-          setScroll({ x: target.scrollLeft, y: target.scrollTop })
-        }
-      />
-      <div
-        ref={output}
-        className="SyntaxHighlightedInput__output"
-        style={{ scrollLeft: scroll.x, scrollTop: scroll.y }}
-      >
-        {tokens.map(renderToken)}
-        {tokens[tokens.length - 1].text.endsWith("\n")
-          ? renderToken({ text: "\n" })
-          : null}
+      <div className="SyntaxHighlightedInput__container">
+        <textarea
+          rows="10"
+          cols="60"
+          className="SyntaxHighlightedInput__input"
+          spellCheck={false}
+          autofocus={true}
+          value={value}
+          onChange={({ target }) => setValue(target.value)}
+          onScroll={({ target }) =>
+            setScroll({ x: target.scrollLeft, y: target.scrollTop })
+          }
+        />
+        <div
+          ref={output}
+          className="SyntaxHighlightedInput__output"
+          style={{ scrollLeft: scroll.x, scrollTop: scroll.y }}
+        >
+          {tokens.map(renderToken)}
+          {tokens.length && tokens[tokens.length - 1].text.endsWith("\n")
+            ? renderToken({ text: "\n" })
+            : null}
+        </div>
       </div>
     </div>
   );

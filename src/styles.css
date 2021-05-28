@@ -1,4 +1,15 @@
+:root {
+  --main-background-color: #130f40;
+}
+
+html {
+  height: 100%;
+}
+
 body {
-  font-family: sans-serif;
-  background-color: #131516;
+  min-height: 100%;
+  background-color: var(--main-background-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
