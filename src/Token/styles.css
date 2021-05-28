@@ -1,0 +1,20 @@
+.Token {
+  --token-none: transparent;
+  --token-braces: #2ecc71;
+  --token-identifier: #3498db;
+  --token-keyword: #8e44ad;
+
+  color: var(--token-none);
+}
+
+.Token--braces {
+  color: var(--token-braces);
+}
+
+.Token--identifier {
+  color: var(--token-identifier);
+}
+
+.Token--keyword {
+  color: var(--token-keyword);
+}

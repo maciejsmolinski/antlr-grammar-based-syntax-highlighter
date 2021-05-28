@@ -1,0 +1,35 @@
+.SyntaxHighlightedInput {
+  --syntax-highlighted-input-border: #ccc;
+}
+
+.SyntaxHighlightedInput__input,
+.SyntaxHighlightedInput__output {
+  border: 1px solid var(--syntax-highlighted-input-border);
+  background: transparent;
+  white-space: pre-wrap;
+  width: 600px;
+  height: 240px;
+  padding: 10px;
+  font-family: monospace;
+  position: absolute;
+  top: 10px;
+  overflow-y: auto;
+  line-height: 20px;
+  font-size: 16px;
+}
+
+.SyntaxHighlightedInput__input {
+  color: transparent;
+  caret-color: #ccc;
+  resize: none;
+  /* z-index: 1; */
+}
+
+.SyntaxHighlightedInput__input:focus {
+  outline: none;
+}
+
+.SyntaxHighlightedInput__output {
+  pointer-events: none;
+  /* z-index: 0; */
+}
