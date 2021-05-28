@@ -38,6 +38,9 @@ export default function SyntaxHighlightedInput({ code }) {
         style={{ scrollLeft: scroll.x, scrollTop: scroll.y }}
       >
         {tokens.map(renderToken)}
+        {tokens[tokens.length - 1].text.endsWith("\n")
+          ? renderToken({ text: "\n" })
+          : null}
       </div>
     </div>
   );
