@@ -15,3 +15,7 @@ const code = `defun helloWorld {
 
 <Highlight code={code} />;
 ```
+
+## Inspiration
+
+- [Creating an Editable Textarea That Supports Syntax-Highlighted Code](https://css-tricks.com/creating-an-editable-textarea-that-supports-syntax-highlighted-code/)
