@@ -27,7 +27,7 @@ export default function SyntaxHighlightedInput({ code }) {
           cols="60"
           className="SyntaxHighlightedInput__input"
           spellCheck={false}
-          autofocus={true}
+          autoFocus={true}
           value={value}
           onChange={({ target }) => setValue(target.value)}
           onScroll={({ target }) =>
