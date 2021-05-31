@@ -6,7 +6,8 @@
   background: var(--syntax-highlighted-input-background);
   box-sizing: border-box;
   width: 600px;
-  height: 240px;
+  /* height: fixed, min-height: adaptive */
+  min-height: 240px;
   padding: 20px;
 }
 
@@ -27,9 +28,6 @@
   height: 100%;
   padding: 0;
   margin: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
   overflow-y: auto;
   white-space: pre-wrap;
 }
@@ -39,6 +37,9 @@
   caret-color: #ccc;
   resize: none;
   appearance: none;
+  position: absolute;
+  top: 0;
+  left: 0;
   /* z-index: 1; */
 }
 
