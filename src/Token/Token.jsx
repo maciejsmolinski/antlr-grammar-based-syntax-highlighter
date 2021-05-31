@@ -9,7 +9,8 @@ const TOKEN_TYPES = new Map([
   [5, 'none'],       // NL
   [6, 'keyword'],    // DEFUN
   [7, 'keyword'],    // CALL
-  [8, 'identifier'], // IDENTIFIER
+  [8, 'identifier'], // NUMBER
+  [9, 'identifier'], // IDENTIFIER
 ])
 
 export default function Token({ text, type }) {

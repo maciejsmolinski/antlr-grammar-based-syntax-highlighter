@@ -5,18 +5,13 @@ import ReactDOM from "react-dom";
 
 import SyntaxHighlightedInput from "./SyntaxHighlightedInput";
 
-const code = `@variable
-
-defun test {
-  @anothervariable
-
-  defun anotherfun {
-    @test
-  }
-  
+const code = `defun inspect value {
+  call logger value
 }
 
-call test`;
+call inspect 1340
+
+call inspect @variable`;
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(

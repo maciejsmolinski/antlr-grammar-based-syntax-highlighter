@@ -10,11 +10,11 @@ export default class LangListener extends antlr4.tree.ParseTreeListener {
   // Exit a parse tree produced by LangParser#program.
   exitProgram(ctx) {}
 
-  // Enter a parse tree produced by LangParser#expression_list.
-  enterExpression_list(ctx) {}
+  // Enter a parse tree produced by LangParser#expression.
+  enterExpression(ctx) {}
 
-  // Exit a parse tree produced by LangParser#expression_list.
-  exitExpression_list(ctx) {}
+  // Exit a parse tree produced by LangParser#expression.
+  exitExpression(ctx) {}
 
   // Enter a parse tree produced by LangParser#function_call.
   enterFunction_call(ctx) {}
@@ -39,4 +39,10 @@ export default class LangListener extends antlr4.tree.ParseTreeListener {
 
   // Exit a parse tree produced by LangParser#identifier.
   exitIdentifier(ctx) {}
+
+  // Enter a parse tree produced by LangParser#number.
+  enterNumber(ctx) {}
+
+  // Exit a parse tree produced by LangParser#number.
+  exitNumber(ctx) {}
 }
