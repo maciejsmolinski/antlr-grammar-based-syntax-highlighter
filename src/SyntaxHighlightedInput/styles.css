@@ -5,9 +5,9 @@
 .SyntaxHighlightedInput {
   background: var(--syntax-highlighted-input-background);
   box-sizing: border-box;
-  width: 600px;
+  width: 800px;
   /* height: fixed, min-height: adaptive */
-  min-height: 240px;
+  min-height: 100px;
   padding: 20px;
 }
 
