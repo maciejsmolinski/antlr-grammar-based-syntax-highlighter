@@ -23,8 +23,6 @@ export default function SyntaxHighlightedInput({ code }) {
     <div className="SyntaxHighlightedInput">
       <div className="SyntaxHighlightedInput__container">
         <textarea
-          rows="10"
-          cols="60"
           className="SyntaxHighlightedInput__input"
           spellCheck={false}
           autoFocus={true}
