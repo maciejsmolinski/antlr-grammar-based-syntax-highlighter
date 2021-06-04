@@ -1,17 +1,19 @@
 grammar Lang;
 
-program: expression_list*;
+program: expression*;
 
-expression_list
+expression
     : function_call
     | function_definition
     | variable
+    | number
     ;
-        
-function_call: CALL identifier;
-function_definition: DEFUN identifier '{' expression_list* '}';
+
+function_call: CALL identifier (variable | number)*;
+function_definition: DEFUN identifier identifier* '{' expression* '}';
 variable: '@' IDENTIFIER;
 identifier: IDENTIFIER;
+number: NUMBER;
 
 WS: [ \t]+ -> channel(HIDDEN);
 NL: [\r\n]+ -> channel(HIDDEN);
@@ -20,7 +22,9 @@ DEFUN: D E F U N ;
 
 CALL: C A L L ;
 
-IDENTIFIER: (LOWERCASE | UPPERCASE)+;
+NUMBER: [0-9]+;
+
+IDENTIFIER: (LOWERCASE | UPPERCASE) (LOWERCASE | UPPERCASE | NUMBER)*;
 
 fragment A: [aA];
 fragment B: [bB];
