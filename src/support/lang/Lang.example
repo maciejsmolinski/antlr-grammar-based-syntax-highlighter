@@ -1,0 +1,10 @@
+defun inspect value {
+  defun internal {
+    call logger value
+  }
+  call internal
+}
+
+call inspect 1340
+
+call inspect inspect

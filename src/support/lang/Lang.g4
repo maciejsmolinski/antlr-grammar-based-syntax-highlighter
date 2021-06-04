@@ -3,24 +3,23 @@ grammar Lang;
 program: expression*;
 
 expression
-    : function_call
+    : number
+    | identifier
+    | function_call
     | function_definition
-    | variable
-    | number
     ;
 
-function_call: CALL identifier (variable | number)*;
-function_definition: DEFUN identifier identifier* '{' expression* '}';
-variable: '@' IDENTIFIER;
+function_call: CALL identifier expression*;
+function_definition: DEFUN identifier+ '{' expression* '}';
 identifier: IDENTIFIER;
 number: NUMBER;
 
 WS: [ \t]+ -> channel(HIDDEN);
 NL: [\r\n]+ -> channel(HIDDEN);
 
-DEFUN: D E F U N ;
+DEFUN: D E F U N;
 
-CALL: C A L L ;
+CALL: C A L L;
 
 NUMBER: [0-9]+;
 
