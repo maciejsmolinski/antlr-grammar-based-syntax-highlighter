@@ -3,27 +3,27 @@ grammar Lang;
 program: expression*;
 
 expression
-    : number
+    : integer
     | identifier
-    | function_call
-    | function_definition
+    | functionCall
+    | functionDefinition
     ;
 
-function_call: CALL identifier expression*;
-function_definition: DEFUN identifier+ '{' expression* '}';
-identifier: IDENTIFIER;
-number: NUMBER;
+integer: Integer;
+identifier: Identifier;
+functionCall: Call identifier expression*;
+functionDefinition: Defun identifier+ LeftBrace expression* RightBrace;
 
-WS: [ \t]+ -> channel(HIDDEN);
-NL: [\r\n]+ -> channel(HIDDEN);
+Whitespace: [ \t]+ -> channel(HIDDEN);
+Newline: [\r\n]+ -> channel(HIDDEN);
 
-DEFUN: D E F U N;
+Defun: D E F U N;
+Call: C A L L;
 
-CALL: C A L L;
-
-NUMBER: [0-9]+;
-
-IDENTIFIER: (LOWERCASE | UPPERCASE) (LOWERCASE | UPPERCASE | NUMBER)*;
+Integer: [+-]? Numeric+;
+Identifier: (LowerCase | UpperCase) (LowerCase | UpperCase | Numeric)*;
+LeftBrace: '{';
+RightBrace: '}';
 
 fragment A: [aA];
 fragment B: [bB];
@@ -52,5 +52,7 @@ fragment X: [xX];
 fragment Y: [yY];
 fragment Z: [zZ];
 
-fragment LOWERCASE: [a-z];
-fragment UPPERCASE: [A-Z];
+fragment LowerCase: [a-z];
+fragment UpperCase: [A-Z];
+
+fragment Numeric: [0-9];

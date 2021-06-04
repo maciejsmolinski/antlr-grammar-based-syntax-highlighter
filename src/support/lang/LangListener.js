@@ -23,21 +23,12 @@ export default class LangListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by LangParser#function_call.
-	enterFunction_call(ctx) {
+	// Enter a parse tree produced by LangParser#integer.
+	enterInteger(ctx) {
 	}
 
-	// Exit a parse tree produced by LangParser#function_call.
-	exitFunction_call(ctx) {
-	}
-
-
-	// Enter a parse tree produced by LangParser#function_definition.
-	enterFunction_definition(ctx) {
-	}
-
-	// Exit a parse tree produced by LangParser#function_definition.
-	exitFunction_definition(ctx) {
+	// Exit a parse tree produced by LangParser#integer.
+	exitInteger(ctx) {
 	}
 
 
@@ -50,12 +41,21 @@ export default class LangListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by LangParser#number.
-	enterNumber(ctx) {
+	// Enter a parse tree produced by LangParser#functionCall.
+	enterFunctionCall(ctx) {
 	}
 
-	// Exit a parse tree produced by LangParser#number.
-	exitNumber(ctx) {
+	// Exit a parse tree produced by LangParser#functionCall.
+	exitFunctionCall(ctx) {
+	}
+
+
+	// Enter a parse tree produced by LangParser#functionDefinition.
+	enterFunctionDefinition(ctx) {
+	}
+
+	// Exit a parse tree produced by LangParser#functionDefinition.
+	exitFunctionDefinition(ctx) {
 	}
 
 

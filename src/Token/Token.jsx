@@ -10,14 +10,14 @@ const TOKENS = {
 
 // prettier-ignore
 const TOKEN_TYPES = new Map([
-  [1, TOKENS.BRACE],      // {
-  [2, TOKENS.BRACE],      // }
-  [3, TOKENS.NONE],       // WS
-  [4, TOKENS.NONE],       // NL
-  [5, TOKENS.KEYWORD],    // DEFUN
-  [6, TOKENS.KEYWORD],    // CALL
-  [7, TOKENS.NUMBER],     // NUMBER
-  [8, TOKENS.IDENTIFIER], // IDENTIFIER
+  [1, TOKENS.NONE],       // Whitespace
+  [2, TOKENS.NONE],       // Newline
+  [3, TOKENS.KEYWORD],    // Defun
+  [4, TOKENS.KEYWORD],    // Call
+  [5, TOKENS.NUMBER],     // Integer
+  [6, TOKENS.IDENTIFIER], // Identifier
+  [7, TOKENS.BRACE],      // {
+  [8, TOKENS.BRACE],      // }
 ])
 
 export default function Token({ text, type }) {
