@@ -1,14 +1,20 @@
 .Token {
+  --token-default: #636e72;
   --token-none: transparent;
-  --token-braces: #2ecc71;
+  --token-brace: var(--token-default);
   --token-identifier: #3498db;
   --token-keyword: #8e44ad;
+  --token-number: #00b894;
 
+  color: var(--token-default);
+}
+
+.Token--none {
   color: var(--token-none);
 }
 
-.Token--braces {
-  color: var(--token-braces);
+.Token--brace {
+  color: var(--token-brace);
 }
 
 .Token--identifier {
@@ -17,4 +23,8 @@
 
 .Token--keyword {
   color: var(--token-keyword);
+}
+
+.Token--number {
+  color: var(--token-number);
 }

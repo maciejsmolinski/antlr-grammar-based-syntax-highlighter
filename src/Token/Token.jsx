@@ -1,16 +1,23 @@
 import "./styles.css";
 
+const TOKENS = {
+  NONE: "none",
+  IDENTIFIER: "identifier",
+  NUMBER: "number",
+  KEYWORD: "keyword",
+  BRACE: "brace",
+};
+
 // prettier-ignore
 const TOKEN_TYPES = new Map([
-  [1, 'braces'],     // {
-  [2, 'braces'],     // }
-  [3, 'identifier'], // @
-  [4, 'none'],       // WS
-  [5, 'none'],       // NL
-  [6, 'keyword'],    // DEFUN
-  [7, 'keyword'],    // CALL
-  [8, 'identifier'], // NUMBER
-  [9, 'identifier'], // IDENTIFIER
+  [1, TOKENS.BRACE],      // {
+  [2, TOKENS.BRACE],      // }
+  [3, TOKENS.NONE],       // WS
+  [4, TOKENS.NONE],       // NL
+  [5, TOKENS.KEYWORD],    // DEFUN
+  [6, TOKENS.KEYWORD],    // CALL
+  [7, TOKENS.NUMBER],     // NUMBER
+  [8, TOKENS.IDENTIFIER], // IDENTIFIER
 ])
 
 export default function Token({ text, type }) {
