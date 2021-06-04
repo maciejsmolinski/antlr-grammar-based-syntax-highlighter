@@ -2,7 +2,7 @@
 
 A work in progress simple syntax highlighter powered by [ANTLR](https://www.antlr.org/) grammars.
 
-<img width="400" src="/assets/preview.gif" />
+<img width="700" src="/assets/preview.gif" />
 
 ## Sample Usage
 
