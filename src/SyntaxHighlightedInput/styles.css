@@ -1,5 +1,7 @@
 :root {
   --syntax-highlighted-input-background: rgb(40, 45, 60);
+  --syntax-highlighted-input-padding: 20px;
+  --syntax-highlighted-input-min-height: 100px;
 }
 
 .SyntaxHighlightedInput {
@@ -7,13 +9,18 @@
   box-sizing: border-box;
   width: 800px;
   /* height: fixed, min-height: adaptive */
-  min-height: 100px;
-  padding: 20px;
+  min-height: var(--syntax-highlighted-input-min-height);
+  padding: var(--syntax-highlighted-input-padding);
 }
 
 .SyntaxHighlightedInput__container {
   width: 100%;
   height: 100%;
+  /* height: fixed, min-height: adaptive */
+  min-height: calc(
+    var(--syntax-highlighted-input-min-height) -
+      (2 * var(--syntax-highlighted-input-padding))
+  );
   position: relative;
 }
 
