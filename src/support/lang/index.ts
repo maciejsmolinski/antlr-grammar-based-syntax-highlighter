@@ -1,1 +1,1 @@
-export { tokenize, token } from "./tokenize";
+export { tokenize } from "./tokenize";

@@ -4,7 +4,7 @@ import antlr, { Lexer } from "antlr4";
 type AntlrTokenId = number;
 
 const getTokenize = (
-  LexerClass: Lexer,
+  LexerClass: typeof Lexer,
   tokenMapping: Map<AntlrTokenId, TokenType>
 ) => {
   return (text: string): { text: string; type: TokenType }[] => {
