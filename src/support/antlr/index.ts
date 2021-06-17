@@ -1,1 +1,1 @@
-export { default as getTokenize } from "./tokenize";
+export { default as getTokenize } from './tokenize';

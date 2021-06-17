@@ -1,7 +1,7 @@
-import LangLexer from "./LangLexer";
-import { TokenType as GenericTokenType } from "../../types";
-import { TOKEN_TYPES } from "../../constants";
-import { getTokenize } from "../antlr";
+import LangLexer from './LangLexer';
+import { TokenType as GenericTokenType } from '../../types';
+import { TOKEN_TYPES } from '../../constants';
+import { getTokenize } from '../antlr';
 
 type AntlrTokenType = number;
 

@@ -1,10 +1,10 @@
-import antlr from "antlr4";
-import { TOKEN_TYPES } from "../../constants";
+import antlr from 'antlr4';
+import { TOKEN_TYPES } from '../../constants';
 import {
   TokenType as GenericTokenType,
   Token as GenericToken,
   Lexer,
-} from "../../types";
+} from '../../types';
 
 type AntlrTokenType = number;
 type AntlrToken = { text: string; type: AntlrTokenType };
