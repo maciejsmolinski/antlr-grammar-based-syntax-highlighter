@@ -1,3 +1,15 @@
+# Generic ignores
 .DS_Store
 *.log
+
+# Web dependencies
 node_modules/
+
+# Web build artifacts
+build
+
+# Antlr build artifacts
+**/*.java
+**/*.class
+**/*.interp
+**/*.tokens
