@@ -1,10 +1,10 @@
-import "./styles.css";
+import './styles.css';
 
-import { StrictMode } from "react";
-import ReactDOM from "react-dom";
+import { StrictMode } from 'react';
+import ReactDOM from 'react-dom';
 
-import SyntaxHighlightedInput from "./components/SyntaxHighlightedInput";
-import { tokenize } from "./support/lang";
+import CodeEditor from './components/CodeEditor';
+import { tokenize } from './support/lang';
 
 const code = `defun inspect value {
   defun internal {
@@ -17,10 +17,10 @@ call inspect 1340
 
 call inspect inspect`;
 
-const rootElement = document.getElementById("root");
+const rootElement = document.getElementById('root');
 ReactDOM.render(
   <StrictMode>
-    <SyntaxHighlightedInput code={code} tokenize={tokenize} />
+    <CodeEditor code={code} tokenize={tokenize} />
   </StrictMode>,
   rootElement
 );

@@ -4,7 +4,7 @@
   --syntax-highlighted-input-min-height: 100px;
 }
 
-.SyntaxHighlightedInput {
+.CodeEditor {
   background: var(--syntax-highlighted-input-background);
   box-sizing: border-box;
   width: 800px;
@@ -13,7 +13,7 @@
   padding: var(--syntax-highlighted-input-padding);
 }
 
-.SyntaxHighlightedInput__container {
+.CodeEditor__container {
   width: 100%;
   height: 100%;
   /* height: fixed, min-height: adaptive */
@@ -24,8 +24,8 @@
   position: relative;
 }
 
-.SyntaxHighlightedInput__input,
-.SyntaxHighlightedInput__output {
+.CodeEditor__input,
+.CodeEditor__output {
   background: transparent;
   border: none;
   font-family: monospace;
@@ -39,7 +39,7 @@
   white-space: pre-wrap;
 }
 
-.SyntaxHighlightedInput__input {
+.CodeEditor__input {
   color: transparent;
   caret-color: #ccc;
   resize: none;
@@ -50,11 +50,11 @@
   /* z-index: 1; */
 }
 
-.SyntaxHighlightedInput__input:focus {
+.CodeEditor__input:focus {
   outline: none;
 }
 
-.SyntaxHighlightedInput__output {
+.CodeEditor__output {
   pointer-events: none;
   /* z-index: 0; */
 }
