@@ -1,6 +1,8 @@
 import "./styles.css";
 import { useState, useRef, useEffect, FC } from "react";
-import TokenComponent, { TokenType, TOKEN_TYPES } from "../Token";
+import TokenComponent from "../Token";
+import { TokenType } from "../types";
+import { TOKEN_TYPES } from "../constants";
 
 function renderToken({ text, type }: Token, index?: number) {
   return <TokenComponent text={text} type={type} key={text + index} />;

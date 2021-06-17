@@ -1,2 +1,1 @@
-export { default, TOKEN_TYPES } from "./Token";
-export type { TokenType } from "./Token";
+export { default } from "./Token";

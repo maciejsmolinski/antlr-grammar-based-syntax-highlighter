@@ -1,7 +1,7 @@
 import LangLexer from "./LangLexer";
-import { TokenType, TOKEN_TYPES } from "../../Token";
+import { TokenType } from "../../types";
+import { TOKEN_TYPES } from "../../constants";
 import { getTokenize } from "../antlr";
-import { Lexer } from "antlr4";
 
 type TokenId = number;
 
@@ -16,7 +16,4 @@ const TOKEN_MAPPING: Map<TokenId, TokenType> = new Map([
   [LangLexer.RightBrace, TOKEN_TYPES.BRACE],
 ]);
 
-export const tokenize = getTokenize(
-  (LangLexer as unknown) as Lexer,
-  TOKEN_MAPPING
-);
+export const tokenize = getTokenize(LangLexer, TOKEN_MAPPING);

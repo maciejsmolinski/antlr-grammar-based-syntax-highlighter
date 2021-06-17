@@ -1,17 +1,8 @@
 import "./styles.css";
 import { FC } from "react";
+import { Token as GenericToken } from "../types";
 
-export type TokenType = "none" | "identifier" | "number" | "keyword" | "brace";
-
-export const TOKEN_TYPES: Record<Uppercase<TokenType>, TokenType> = {
-  NONE: "none",
-  IDENTIFIER: "identifier",
-  NUMBER: "number",
-  KEYWORD: "keyword",
-  BRACE: "brace",
-};
-
-type ComponentProps = { text: string; type: TokenType };
+type ComponentProps = GenericToken;
 
 const Token: FC<ComponentProps> = ({ text, type }) => {
   return <span className={`Token Token--${type}`}>{text}</span>;
