@@ -2,6 +2,8 @@
 
 A work in progress simple syntax highlighter powered by [ANTLR](https://www.antlr.org/) grammars.
 
+Given an antlr-generated lexer and a mapping from lexer-specific token ids to general token types, it is going to highlight the code without the need to install extra libraries.
+
 <img width="700" src="/assets/preview.gif" />
 
 ## Sample Usage
@@ -10,8 +12,7 @@ First, we import ANTLR-generated Lexer, Highlight component, some support functi
 
 ```jsx
 import MyLanguageLexer from "my-language-lexer-and-parser";
-import { SyntaxHighlightedInput as Highlight } from "./components";
-import { getTokenize as makeTokenizeFn } from "./support/lang";
+import { SyntaxHighlightedInput as Highlightm getTokenize as makeTokenizeFn } from "antlr-grammar-based-syntax-highlighter";
 ```
 
 Next, we create a mapping from language tokens to generally recognized token types to apply different highlighting style for each token type:
@@ -28,13 +29,29 @@ const TOKEN_MAPPING = new Map([
 ]);
 ```
 
-Finally, we give the Highlight component some code to highlight. The `makeTokenizeFn` generates a tokenize function for us given Lexer and the mapping rules: 
+Then, we create a custom highlighter given lexer and mapping rules: 
 
 ```jsx
-const code = `return { id: 175 }`;
 const tokenize = makeTokenizeFn(MyLanguageLexer, TOKEN_MAPPING);
 
-<Highlight code={code} tokenize={tokenize} />;
+export default const MyLanguageHighlighter = ({ code  }) => {
+  return <Highlight code={code} tokenize={makeTokenizeFn(MyLanguageLexer, TOKEN_MAPPING)} />;
+}
+```
+
+Finally, we can use the `<MyLanguageHighlighter />` component:
+
+```jsx
+import ReactDOM from "react-dom";
+import MyLanguageHighlighter from './MyLanguageHighlighter';
+
+const rootElement = document.getElementById("root");
+const code = 'return { id: 175 }';
+
+ReactDOM.render(
+  <MyLanguageHighlighter code={code} />
+  rootElement
+);
 ```
 
 ## Types and constants
