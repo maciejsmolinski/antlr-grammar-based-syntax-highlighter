@@ -38,23 +38,30 @@ Then, we create a custom highlighter given lexer and mapping rules:
 ```jsx
 const tokenize = makeTokenizeFn(MyLanguageLexer, TOKEN_MAPPING);
 
-export default const MyLanguageEditor = ({ code  }) => {
-  return <CodeEditor code={code} tokenize={makeTokenizeFn(MyLanguageLexer, TOKEN_MAPPING)} />;
-}
+const MyLanguageEditor = ({ code }) => {
+  return (
+    <CodeEditor
+      code={code}
+      tokenize={makeTokenizeFn(MyLanguageLexer, TOKEN_MAPPING)}
+    />
+  );
+};
+
+export default MyLanguageEditor;
 ```
 
 Finally, we can use the newly created `<MyLanguageEditor />` component:
 
 ```jsx
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
 import MyLanguageEditor from './MyLanguageEditor';
 
-const rootElement = document.getElementById("root");
 const code = 'return { id: 175 }';
 
 ReactDOM.render(
-  <MyLanguageEditor code={code} />
-  rootElement
+  <MyLanguageEditor code={code} />,
+  document.getElementById('root')
 );
 ```
 
