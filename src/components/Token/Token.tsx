@@ -1,6 +1,6 @@
 import "./styles.css";
 import { FC } from "react";
-import { Token as GenericToken } from "../types";
+import { Token as GenericToken } from "../../types";
 
 type ComponentProps = GenericToken;
 

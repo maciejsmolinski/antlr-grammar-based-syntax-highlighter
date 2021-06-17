@@ -1,11 +1,11 @@
 import LangLexer from "./LangLexer";
-import { TokenType } from "../../types";
+import { TokenType as GenericTokenType } from "../../types";
 import { TOKEN_TYPES } from "../../constants";
 import { getTokenize } from "../antlr";
 
-type TokenId = number;
+type AntlrTokenType = number;
 
-const TOKEN_MAPPING: Map<TokenId, TokenType> = new Map([
+const TOKEN_MAPPING: Map<AntlrTokenType, GenericTokenType> = new Map([
   [LangLexer.Whitespace, TOKEN_TYPES.NONE],
   [LangLexer.Newline, TOKEN_TYPES.NONE],
   [LangLexer.Defun, TOKEN_TYPES.KEYWORD],

@@ -3,7 +3,7 @@ import "./styles.css";
 import { StrictMode } from "react";
 import ReactDOM from "react-dom";
 
-import SyntaxHighlightedInput from "./SyntaxHighlightedInput";
+import SyntaxHighlightedInput from "./components/SyntaxHighlightedInput";
 import { tokenize } from "./support/lang";
 
 const code = `defun inspect value {

@@ -3,14 +3,10 @@ import { TOKEN_TYPES } from "../../constants";
 import {
   TokenType as GenericTokenType,
   Token as GenericToken,
+  Lexer,
 } from "../../types";
 
-type Lexer = {
-  new (input: antlr.InputStream): antlr.Lexer;
-};
-
 type AntlrTokenType = number;
-
 type AntlrToken = { text: string; type: AntlrTokenType };
 
 const getTokenize = (

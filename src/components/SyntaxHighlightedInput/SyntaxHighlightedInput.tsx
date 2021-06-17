@@ -1,25 +1,16 @@
 import "./styles.css";
 import { useState, useRef, useEffect, FC } from "react";
 import TokenComponent from "../Token";
-import { TokenType } from "../types";
-import { TOKEN_TYPES } from "../constants";
+import { Token as GenericToken, Tokenizer } from "../../types";
+import { TOKEN_TYPES } from "../../constants";
 
-function renderToken({ text, type }: Token, index?: number) {
+function renderToken({ text, type }: GenericToken, index?: number) {
   return <TokenComponent text={text} type={type} key={text + index} />;
 }
 
-type Token = { text: string; type: TokenType };
-type Tokenizer = (code: string) => Token[];
-
 type ComponentProps = { code: string; tokenize: Tokenizer };
 
-const SyntaxHighlightedInput: FC<ComponentProps> = ({
-  code,
-  tokenize,
-}: {
-  code: string;
-  tokenize: Tokenizer;
-}) => {
+const SyntaxHighlightedInput: FC<ComponentProps> = ({ code, tokenize }) => {
   const [value, setValue] = useState(code || "");
   const [scroll, setScroll] = useState({ x: 0, y: 0 });
   const output = useRef<HTMLDivElement | null>(null);
