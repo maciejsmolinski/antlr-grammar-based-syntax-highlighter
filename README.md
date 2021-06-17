@@ -6,13 +6,17 @@ A work in progress simple syntax highlighter powered by [ANTLR](https://www.antl
 
 ## Sample Usage
 
-First, we import ANTLR-generated Lexer, Highlight component, some support functions. Then, we create a mapping from ANTLR tokens to generic token types:
+First, we import ANTLR-generated Lexer, Highlight component, some support functions:
 
 ```jsx
-import MyLanguageLexer from "./antlr/MyLanguageLexer";
+import MyLanguageLexer from "my-language-lexer-and-parser";
 import { SyntaxHighlightedInput as Highlight } from "./components";
 import { getTokenize as makeTokenizeFn } from "./support/lang";
+```
 
+Next, we create a mapping from language tokens to generally recognized token types to apply different highlighting style for each token type:
+
+```jsx
 const TOKEN_MAPPING = new Map([
   [MyLanguageLexer.Integer, TOKEN_TYPES.NUMBER],
   [MyLanguageLexer.Identifier, TOKEN_TYPES.IDENTIFIER],
@@ -24,13 +28,34 @@ const TOKEN_MAPPING = new Map([
 ]);
 ```
 
-Finally, we pass the code and generate tokenize fn to make things magically work without writing extra code:
+Finally, we give the Highlight component some code to highlight. The `makeTokenizeFn` generates a tokenize function for us given Lexer and the mapping rules: 
 
 ```jsx
 const code = `return { id: 175 }`;
 const tokenize = makeTokenizeFn(MyLanguageLexer, TOKEN_MAPPING);
 
 <Highlight code={code} tokenize={tokenize} />;
+```
+
+## Types and constants
+
+```ts
+type TokenType 
+  = "none"
+  | "identifier" 
+  | "number" 
+  | "keyword" 
+  | "brace";
+```
+
+```js
+const TOKEN_TYPES = {
+  NONE: 'none',
+  IDENTIFIER: "identifier",
+  NUMBER: "number",
+  KEYWORD: "keyword",
+  BRACE: "brace",
+}
 ```
 
 ## Inspiration
@@ -43,7 +68,7 @@ Clone the repository and execute the following commands in the project's dir fro
 
 ```bash
 $ npm install --force
-$ npm start # opens localhost:3000
+$ npm start # starts a server at localhost:3000
 ```
 
 ## Updating Grammar and generating JavaScript parser/lexer
