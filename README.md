@@ -95,6 +95,6 @@ $ npm start # starts a server at localhost:3000
 
 ## Updating Grammar and generating JavaScript parser/lexer
 
-Grammar definition is located under `src/support/lang/Lang.g4`. To generate Parser, Lexer and Listener javascript files, run `make js` in the root dir of the project.
+An example grammar definition is located under `src/example/antlr/Lang.g4`. To generate Parser/Lexer/Listener javascript files, please run `make js` in the root dir of the project.
 
 [ANTLR](https://www.antlr.org/) installation is required.
