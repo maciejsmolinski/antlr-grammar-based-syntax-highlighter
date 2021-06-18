@@ -8,18 +8,19 @@ Given an antlr-generated lexer and a mapping from lexer-specific token ids to ge
 
 ## Sample Usage
 
-First, we import a custom antlr-generated lexer, the highlight component, some support functions and some constants:
+First, in addition to MyLanguageLexer, we import the default CodeEditor, makeTokenizeFn function and TOKEN_TYPES constant from this project:
 
 ```jsx
-import MyLanguageLexer from 'my-language-lexer-and-parser';
 import {
   CodeEditor,
   makeTokenizeFn,
   TOKEN_TYPES,
 } from 'antlr-grammar-based-syntax-highlighter';
+
+import { MyLanguageLexer } from 'antlr-generated-my-language-lexer-and-parser';
 ```
 
-Next, we create a mapping from language tokens to generally recognized token types to apply different highlighting style for each token type:
+Next, we create a mapping from MyLanguageLexer tokens to generally recognized token types to apply different highlighting style for each token:
 
 ```jsx
 const TOKEN_MAPPING = new Map([
@@ -33,7 +34,7 @@ const TOKEN_MAPPING = new Map([
 ]);
 ```
 
-Then, we create a custom highlighter given lexer and mapping rules:
+Then, we create a custom highlighter with the lexer and mapping rules:
 
 ```jsx
 const tokenize = makeTokenizeFn(MyLanguageLexer, TOKEN_MAPPING);
@@ -50,7 +51,7 @@ const MyLanguageEditor = ({ code }) => {
 export default MyLanguageEditor;
 ```
 
-Finally, we can use the newly created `<MyLanguageEditor />` component:
+Finally, we can use the newly created `<MyLanguageEditor code="..." />` component:
 
 ```jsx
 import React from 'react';
