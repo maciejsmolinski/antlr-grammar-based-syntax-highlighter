@@ -3,4 +3,4 @@ import './example';
 
 export { TOKEN_TYPES } from './constants';
 export { CodeEditor } from './components';
-export { getTokenize } from './support';
+export { makeTokenizeFn } from './support';

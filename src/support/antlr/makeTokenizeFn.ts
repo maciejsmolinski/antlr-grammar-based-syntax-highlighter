@@ -9,7 +9,7 @@ import {
 type AntlrTokenType = number;
 type AntlrToken = { text: string; type: AntlrTokenType };
 
-const getTokenize = (
+const makeTokenizeFn = (
   LexerClass: Lexer,
   tokenMapping: Map<AntlrTokenType, GenericTokenType>
 ) => {
@@ -26,4 +26,4 @@ const getTokenize = (
   };
 };
 
-export default getTokenize;
+export default makeTokenizeFn;

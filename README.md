@@ -14,7 +14,7 @@ First, we import a custom antlr-generated lexer, the highlight component, some s
 import MyLanguageLexer from 'my-language-lexer-and-parser';
 import {
   CodeEditor,
-  getTokenize as makeTokenizeFn,
+  makeTokenizeFn,
   TOKEN_TYPES,
 } from 'antlr-grammar-based-syntax-highlighter';
 ```

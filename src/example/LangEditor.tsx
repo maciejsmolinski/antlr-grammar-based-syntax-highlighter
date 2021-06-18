@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import LangLexer from './antlr/LangLexer';
-import CodeEditor from '../components/CodeEditor';
+import { CodeEditor } from '../components';
 import { TOKEN_TYPES } from '../constants';
-import { getTokenize as makeTokenizeFn } from '../support/antlr';
+import { makeTokenizeFn } from '../support';
 
 const TOKEN_MAPPING = new Map([
   [LangLexer.Whitespace, TOKEN_TYPES.NONE],
