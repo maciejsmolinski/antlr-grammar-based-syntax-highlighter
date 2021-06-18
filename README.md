@@ -37,8 +37,6 @@ const TOKEN_MAPPING = new Map([
 Then, we create a custom highlighter with the lexer and mapping rules:
 
 ```jsx
-const tokenize = makeTokenizeFn(MyLanguageLexer, TOKEN_MAPPING);
-
 const MyLanguageEditor = ({ code }) => {
   return (
     <CodeEditor
