@@ -1,4 +1,4 @@
-// Generated from src/support/lang/Lang.g4 by ANTLR 4.9.2
+// Generated from src/example/antlr/Lang.g4 by ANTLR 4.9.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
