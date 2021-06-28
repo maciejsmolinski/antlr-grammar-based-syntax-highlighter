@@ -1,18 +1,37 @@
 grammar Lang;
 
-program: expression*;
+program: expressionList;
+
+expressionList
+    : expression*
+    ;
 
 expression
-    : integer
+    : literal
     | identifier
+    | functionDeclaration
     | functionCall
-    | functionDefinition
+    ;
+
+literal
+    : integer
+    | string
     ;
 
 integer: Integer;
+
+string
+    : '"' ~'"'* '"'
+    | '\'' ~'\''* '\''
+    ;
+
 identifier: Identifier;
-functionCall: Call identifier expression*;
-functionDefinition: Defun identifier+ LeftBrace expression* RightBrace;
+
+functionCall: Call identifier expressionList;
+
+functionDeclaration: Defun identifier identifier* blockStatement;
+
+blockStatement: LeftBrace expressionList? RightBrace;
 
 Whitespace: [ \t]+ -> channel(HIDDEN);
 Newline: [\r\n]+ -> channel(HIDDEN);
