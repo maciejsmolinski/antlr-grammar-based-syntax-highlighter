@@ -10,12 +10,11 @@ const TOKEN_MAPPING = new Map([
   [LangLexer.Defun, TOKEN_TYPES.KEYWORD],
   [LangLexer.Call, TOKEN_TYPES.KEYWORD],
   [LangLexer.Integer, TOKEN_TYPES.NUMBER],
+  [LangLexer.String, TOKEN_TYPES.NUMBER],
   [LangLexer.Identifier, TOKEN_TYPES.IDENTIFIER],
   [LangLexer.LeftBrace, TOKEN_TYPES.BRACE],
   [LangLexer.RightBrace, TOKEN_TYPES.BRACE],
   [LangLexer.Comma, TOKEN_TYPES.BRACE],
-  [LangLexer.SQuote, TOKEN_TYPES.BRACE],
-  [LangLexer.DQuote, TOKEN_TYPES.BRACE],
 ]);
 
 type LangEditorProps = { code: string };

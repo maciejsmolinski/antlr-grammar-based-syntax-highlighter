@@ -20,10 +20,7 @@ literal
 
 integer: Integer;
 
-string
-    : DQuote ~DQuote* DQuote
-    | SQuote ~SQuote* SQuote
-    ;
+string: String;
 
 identifier: Identifier;
 
@@ -40,12 +37,26 @@ Defun: D E F U N;
 Call: C A L L;
 
 Integer: [+-]? Numeric+;
+String
+    : DQuote NDQuote* DQuote
+    | SQuote NSQuote* SQuote
+    ;
+
 Identifier: (LowerCase | UpperCase) (LowerCase | UpperCase | Numeric)*;
 LeftBrace: '{';
 RightBrace: '}';
 Comma: ',';
-SQuote: '\'';
-DQuote: '"';
+
+fragment SQuote: '\'';
+fragment NSQuote: ~'\'';
+
+fragment DQuote: '"';
+fragment NDQuote: ~'"';
+
+fragment LowerCase: [a-z];
+fragment UpperCase: [A-Z];
+
+fragment Numeric: [0-9];
 
 fragment A: [aA];
 fragment B: [bB];
@@ -73,8 +84,3 @@ fragment W: [wW];
 fragment X: [xX];
 fragment Y: [yY];
 fragment Z: [zZ];
-
-fragment LowerCase: [a-z];
-fragment UpperCase: [A-Z];
-
-fragment Numeric: [0-9];
