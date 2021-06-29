@@ -11,7 +11,9 @@ const code = `defun inspect value {
 
 call inspect 1340
 
-call inspect inspect`;
+call inspect inspect
+
+call inspect "[LOG]", 'test value', 531`;
 
 ReactDOM.render(
   <StrictMode>

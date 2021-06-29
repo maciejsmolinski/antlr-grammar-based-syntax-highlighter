@@ -13,6 +13,9 @@ const TOKEN_MAPPING = new Map([
   [LangLexer.Identifier, TOKEN_TYPES.IDENTIFIER],
   [LangLexer.LeftBrace, TOKEN_TYPES.BRACE],
   [LangLexer.RightBrace, TOKEN_TYPES.BRACE],
+  [LangLexer.Comma, TOKEN_TYPES.BRACE],
+  [LangLexer.SQuote, TOKEN_TYPES.BRACE],
+  [LangLexer.DQuote, TOKEN_TYPES.BRACE],
 ]);
 
 type LangEditorProps = { code: string };

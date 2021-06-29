@@ -9,4 +9,4 @@ call inspect 1340
 
 call inspect inspect
 
-call inspect "test" 'test'
+call inspect "test", 'test'

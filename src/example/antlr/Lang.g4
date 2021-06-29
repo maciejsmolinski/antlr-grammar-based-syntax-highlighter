@@ -21,17 +21,17 @@ literal
 integer: Integer;
 
 string
-    : '"' ~'"'* '"'
-    | '\'' ~'\''* '\''
+    : DQuote ~DQuote* DQuote
+    | SQuote ~SQuote* SQuote
     ;
 
 identifier: Identifier;
 
-functionCall: Call identifier expressionList;
+functionCall: Call identifier expression? (Comma expression)*;
 
 functionDeclaration: Defun identifier identifier* blockStatement;
 
-blockStatement: LeftBrace expressionList? RightBrace;
+blockStatement: LeftBrace expressionList RightBrace;
 
 Whitespace: [ \t]+ -> channel(HIDDEN);
 Newline: [\r\n]+ -> channel(HIDDEN);
@@ -43,6 +43,9 @@ Integer: [+-]? Numeric+;
 Identifier: (LowerCase | UpperCase) (LowerCase | UpperCase | Numeric)*;
 LeftBrace: '{';
 RightBrace: '}';
+Comma: ',';
+SQuote: '\'';
+DQuote: '"';
 
 fragment A: [aA];
 fragment B: [bB];

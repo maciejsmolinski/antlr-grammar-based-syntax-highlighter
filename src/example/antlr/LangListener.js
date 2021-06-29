@@ -14,6 +14,15 @@ export default class LangListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by LangParser#expressionList.
+	enterExpressionList(ctx) {
+	}
+
+	// Exit a parse tree produced by LangParser#expressionList.
+	exitExpressionList(ctx) {
+	}
+
+
 	// Enter a parse tree produced by LangParser#expression.
 	enterExpression(ctx) {
 	}
@@ -23,12 +32,30 @@ export default class LangListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by LangParser#literal.
+	enterLiteral(ctx) {
+	}
+
+	// Exit a parse tree produced by LangParser#literal.
+	exitLiteral(ctx) {
+	}
+
+
 	// Enter a parse tree produced by LangParser#integer.
 	enterInteger(ctx) {
 	}
 
 	// Exit a parse tree produced by LangParser#integer.
 	exitInteger(ctx) {
+	}
+
+
+	// Enter a parse tree produced by LangParser#string.
+	enterString(ctx) {
+	}
+
+	// Exit a parse tree produced by LangParser#string.
+	exitString(ctx) {
 	}
 
 
@@ -50,12 +77,21 @@ export default class LangListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by LangParser#functionDefinition.
-	enterFunctionDefinition(ctx) {
+	// Enter a parse tree produced by LangParser#functionDeclaration.
+	enterFunctionDeclaration(ctx) {
 	}
 
-	// Exit a parse tree produced by LangParser#functionDefinition.
-	exitFunctionDefinition(ctx) {
+	// Exit a parse tree produced by LangParser#functionDeclaration.
+	exitFunctionDeclaration(ctx) {
+	}
+
+
+	// Enter a parse tree produced by LangParser#blockStatement.
+	enterBlockStatement(ctx) {
+	}
+
+	// Exit a parse tree produced by LangParser#blockStatement.
+	exitBlockStatement(ctx) {
 	}
 
 
