@@ -36,7 +36,7 @@ const TOKEN_MAPPING = new Map([
 
 Then, we generate a tokenize function that our code editor will use for code highlighting:
 
-```
+```jsx
 const tokenize = makeTokenizeFn(MyLanguageLexer, TOKEN_MAPPING);
 ```
 
