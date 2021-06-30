@@ -70,6 +70,7 @@ ReactDOM.render(
 ```js
 const TOKEN_TYPES = {
   NONE: 'none',
+  RAW: 'raw',
   IDENTIFIER: 'identifier',
   NUMBER: 'number',
   KEYWORD: 'keyword',
