@@ -25,7 +25,8 @@
 }
 
 .CodeEditor__input,
-.CodeEditor__output {
+.CodeEditor__output,
+.CodeEditor__cursor {
   background: transparent;
   border: none;
   font-family: monospace;
@@ -48,6 +49,14 @@
   top: 0;
   left: 0;
   /* z-index: 1; */
+}
+
+.CodeEditor__cursor {
+  color: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
 }
 
 .CodeEditor__input:focus {
