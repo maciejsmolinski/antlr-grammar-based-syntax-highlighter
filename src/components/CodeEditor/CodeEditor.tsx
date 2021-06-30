@@ -8,12 +8,17 @@ function renderToken({ text, type }: GenericToken, index?: number) {
   return <TokenComponent text={text} type={type} key={text + index} />;
 }
 
+function renderChar(char: string, index: number) {
+  return <span key={index}>{char}</span>;
+}
+
 type ComponentProps = { code: string; tokenize: Tokenizer };
 
 const CodeEditor: FC<ComponentProps> = ({ code, tokenize }) => {
   const [value, setValue] = useState(code || '');
   const [scroll, setScroll] = useState({ x: 0, y: 0 });
   const output = useRef<HTMLDivElement | null>(null);
+  const cursor = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!output.current) {
@@ -22,6 +27,13 @@ const CodeEditor: FC<ComponentProps> = ({ code, tokenize }) => {
 
     output.current.scrollLeft = scroll.x;
     output.current.scrollTop = scroll.y;
+
+    if (!cursor.current) {
+      return;
+    }
+
+    cursor.current.scrollLeft = scroll.x;
+    cursor.current.scrollTop = scroll.y;
   }, [scroll.x, scroll.y]);
 
   const tokens = tokenize(value);
@@ -49,6 +61,9 @@ const CodeEditor: FC<ComponentProps> = ({ code, tokenize }) => {
           {tokens.length && tokens[tokens.length - 1].text.endsWith('\n')
             ? renderToken({ text: '\n', type: TOKEN_TYPES.NONE })
             : null}
+        </div>
+        <div ref={cursor} className="CodeEditor__cursor">
+          {value.split('').map(renderChar)}
         </div>
       </div>
     </div>
