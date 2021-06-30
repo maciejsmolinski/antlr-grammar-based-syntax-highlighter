@@ -14,8 +14,44 @@ function renderChar(char: string, index: number) {
 
 type ComponentProps = { code: string; tokenize: Tokenizer };
 
+type EditorState = {
+  line: number;
+  pos: number;
+  value: string;
+};
+
+// type ViewState = {
+//   x: number;
+//   y: number;
+//   scrollX: number;
+//   scrollY: number;
+// };
+
+// @TODO: Expose editing utils, e.g. insertAt, replaceAt, etc.
+const useEditorState = function (initialState?: Partial<EditorState>) {
+  const defaultState = { line: 0, pos: 0, value: '' };
+
+  return useState<EditorState>({
+    ...defaultState,
+    ...initialState,
+  });
+};
+
+// const useViewState = function (initialState?: Partial<ViewState>) {
+//   const defaultState = { x: 0, y: 0 };
+
+//   return useState<ViewState>({
+//     ...defaultState,
+//     ...initialState,
+//   });
+// };
+
 const CodeEditor: FC<ComponentProps> = ({ code, tokenize }) => {
-  const [value, setValue] = useState(code || '');
+  const [editorState, setEditorState] = useEditorState({ value: code || '' });
+  const setValue = (value?: string) =>
+    setEditorState({ ...editorState, value: value || '' });
+  const { value } = editorState;
+
   const [scroll, setScroll] = useState({ x: 0, y: 0 });
   const output = useRef<HTMLDivElement | null>(null);
   const cursor = useRef<HTMLDivElement | null>(null);
