@@ -4,7 +4,7 @@ import antlr4 from 'antlr4';
 import LangListener from './LangListener.js';
 
 const serializedATN = ["\u0003\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786",
-    "\u5964\u0003\fI\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0004\u0004",
+    "\u5964\u0003\rI\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0004\u0004",
     "\t\u0004\u0004\u0005\t\u0005\u0004\u0006\t\u0006\u0004\u0007\t\u0007",
     "\u0004\b\t\b\u0004\t\t\t\u0004\n\t\n\u0004\u000b\t\u000b\u0003\u0002",
     "\u0003\u0002\u0003\u0003\u0007\u0003\u001a\n\u0003\f\u0003\u000e\u0003",
@@ -58,7 +58,7 @@ export default class LangParser extends antlr4.Parser {
                             "'{'", "'}'", "','" ];
     static symbolicNames = [ null, "Whitespace", "Newline", "Defun", "Call", 
                              "Integer", "String", "Identifier", "LeftBrace", 
-                             "RightBrace", "Comma" ];
+                             "RightBrace", "Comma", "Any" ];
     static ruleNames = [ "program", "expressionList", "expression", "literal", 
                          "integer", "string", "identifier", "functionCall", 
                          "functionDeclaration", "blockStatement" ];
@@ -409,6 +409,7 @@ LangParser.Identifier = 7;
 LangParser.LeftBrace = 8;
 LangParser.RightBrace = 9;
 LangParser.Comma = 10;
+LangParser.Any = 11;
 
 LangParser.RULE_program = 0;
 LangParser.RULE_expressionList = 1;
