@@ -1,3 +1,3 @@
-import { Token as GenericToken } from './token';
+import { Token } from './token';
 
-export type Tokenizer = (code: string) => GenericToken[];
+export type Tokenizer = (code: string) => Token[];
