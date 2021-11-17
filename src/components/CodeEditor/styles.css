@@ -2,6 +2,8 @@
   --syntax-highlighted-input-background: rgb(40, 45, 60);
   --syntax-highlighted-input-padding: 20px;
   --syntax-highlighted-input-min-height: 100px;
+  --syntax-highlighted-input-cursor-color: #a9a9a9;
+  --syntax-highlighted-input-cursor-width: 1px;
 }
 
 .CodeEditor {
@@ -51,12 +53,39 @@
   /* z-index: 1; */
 }
 
+@keyframes blinkingCursor {
+  0%,
+  49% {
+    background-color: var(--syntax-highlighted-input-cursor-color);
+  }
+  50%,
+  100% {
+    background-color: transparent;
+  }
+}
+
 .CodeEditor__cursor {
   color: transparent;
   position: absolute;
   top: 0;
   left: 0;
   pointer-events: none;
+}
+
+.CodeEditor__cursor > span.active {
+  position: relative;
+}
+
+.CodeEditor__cursor > span.active:after {
+  position: absolute;
+  box-sizing: border-box;
+  width: var(--syntax-highlighted-input-cursor-width);
+  height: 100%;
+  right: calc(-0.5px - var(--syntax-highlighted-input-cursor-width) / 2);
+  top: 0;
+  background: var(--syntax-highlighted-input-cursor-color);
+  content: ' ';
+  animation: blinkingCursor 1s infinite;
 }
 
 .CodeEditor__input:focus {
