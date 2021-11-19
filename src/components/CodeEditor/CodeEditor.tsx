@@ -8,8 +8,12 @@ function renderToken({ text, type }: GenericToken, index?: number) {
   return <TokenComponent text={text} type={type} key={text + index} />;
 }
 
-function renderChar(char: string, index: number) {
-  return <span key={index}>{char}</span>;
+function renderChar(char: string, index: number, active: boolean) {
+  return (
+    <span key={index} className={active ? 'active' : undefined}>
+      {char}
+    </span>
+  );
 }
 
 type ComponentProps = { code: string; tokenize: Tokenizer };
@@ -109,7 +113,11 @@ const CodeEditor: FC<ComponentProps> = ({ code, tokenize }) => {
             : null}
         </div>
         <div ref={cursor} className="CodeEditor__cursor">
-          {value.split('').map(renderChar)}
+          {value
+            .split('')
+            .map((char, index) =>
+              renderChar(char, index, editorState.pos === index)
+            )}
         </div>
       </div>
     </div>

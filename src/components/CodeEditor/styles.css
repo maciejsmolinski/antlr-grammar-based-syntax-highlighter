@@ -81,7 +81,8 @@
   box-sizing: border-box;
   width: var(--syntax-highlighted-input-cursor-width);
   height: 100%;
-  right: calc(-0.5px - var(--syntax-highlighted-input-cursor-width) / 2);
+  max-height: 1em;
+  left: calc(-1 * var(--syntax-highlighted-input-cursor-width) / 2);
   top: 0;
   background: var(--syntax-highlighted-input-cursor-color);
   content: ' ';
