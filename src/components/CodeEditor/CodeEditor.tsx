@@ -48,8 +48,6 @@ const useEditorState = function (initialState?: Partial<EditorState>) {
 
 const CodeEditor: FC<ComponentProps> = ({ code, tokenize }) => {
   const [editorState, setEditorState] = useEditorState({ value: code || '' });
-  const setValue = (value?: string) =>
-    setEditorState({ ...editorState, value: value || '' });
   const { value } = editorState;
 
   const [scroll, setScroll] = useState({ x: 0, y: 0 });
@@ -82,9 +80,21 @@ const CodeEditor: FC<ComponentProps> = ({ code, tokenize }) => {
           spellCheck={false}
           autoFocus={true}
           value={value}
-          onChange={({ target }) => setValue(target.value)}
+          onChange={({ target }) => {
+            const element = target as HTMLTextAreaElement;
+
+            setEditorState({
+              ...editorState,
+              value: element.value || '',
+            });
+          }}
+          onSelect={({ target }) => {
+            const element = target as HTMLTextAreaElement;
+
+            setEditorState({ ...editorState, pos: element.selectionEnd });
+          }}
           onScroll={({ target }) => {
-            const element = target as HTMLAreaElement;
+            const element = target as HTMLTextAreaElement;
 
             setScroll({
               x: element.scrollLeft,
