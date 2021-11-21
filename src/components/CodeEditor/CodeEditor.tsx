@@ -1,5 +1,5 @@
 import './styles.css';
-import { useState, useRef, useEffect, FC } from 'react';
+import { useState, useReducer, useRef, useEffect, FC } from 'react';
 import TokenComponent from '../Token';
 import { Token as GenericToken, Tokenizer } from '../../types';
 import { TOKEN_TYPES } from '../../constants';
@@ -31,14 +31,40 @@ type EditorState = {
 //   scrollY: number;
 // };
 
-// @TODO: Expose editing utils, e.g. insertAt, replaceAt, etc.
-const useEditorState = function (initialState?: Partial<EditorState>) {
-  const defaultState = { line: 0, pos: 0, value: '' };
+type Action =
+  | {
+      type: 'setCursorPosition';
+      payload: number;
+    }
+  | { type: 'setValue'; payload: string };
 
-  return useState<EditorState>({
-    ...defaultState,
-    ...initialState,
-  });
+type Actions = Action['type'];
+
+// @TODO: Expose editing utils, e.g. insertAt, replaceAt, etc.
+const useEditorReducer = function <T>(
+  initialState: T
+): [T, Record<Actions, any>] {
+  const reducer = (state: T, action: Action) => {
+    switch (action.type) {
+      case 'setCursorPosition':
+        return { ...state, pos: action.payload };
+      case 'setValue':
+        return { ...state, value: action.payload };
+      default:
+        return state;
+    }
+  };
+
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const actions = {
+    setCursorPosition: (x: number) =>
+      dispatch({ type: 'setCursorPosition', payload: x }),
+    setValue: (code: string) =>
+      dispatch({ type: 'setValue', payload: code || '' }),
+  };
+
+  return [state, actions];
 };
 
 // const useViewState = function (initialState?: Partial<ViewState>) {
@@ -51,12 +77,17 @@ const useEditorState = function (initialState?: Partial<EditorState>) {
 // };
 
 const CodeEditor: FC<ComponentProps> = ({ code, tokenize }) => {
-  const [editorState, setEditorState] = useEditorState({ value: code || '' });
-  const { value } = editorState;
-
   const [scroll, setScroll] = useState({ x: 0, y: 0 });
   const output = useRef<HTMLDivElement | null>(null);
   const cursor = useRef<HTMLDivElement | null>(null);
+
+  const [editorState, actions] = useEditorReducer<EditorState>({
+    value: code || '',
+    line: 0,
+    pos: 0,
+  });
+
+  const { value } = editorState;
 
   useEffect(() => {
     if (!output.current) {
@@ -87,15 +118,12 @@ const CodeEditor: FC<ComponentProps> = ({ code, tokenize }) => {
           onChange={({ target }) => {
             const element = target as HTMLTextAreaElement;
 
-            setEditorState({
-              ...editorState,
-              value: element.value || '',
-            });
+            actions.setValue(element.value || '');
           }}
           onSelect={({ target }) => {
             const element = target as HTMLTextAreaElement;
 
-            setEditorState({ ...editorState, pos: element.selectionEnd });
+            actions.setCursorPosition(element.selectionEnd);
           }}
           onScroll={({ target }) => {
             const element = target as HTMLTextAreaElement;
