@@ -1,5 +1,5 @@
 import './styles.css';
-import { useState, useReducer, useRef, useEffect, FC } from 'react';
+import { useState, useReducer, useRef, useEffect, FC, useMemo } from 'react';
 import TokenComponent from '../Token';
 import { Token as GenericToken, Tokenizer } from '../../types';
 import { TOKEN_TYPES } from '../../constants';
@@ -105,7 +105,7 @@ const CodeEditor: FC<ComponentProps> = ({ code, tokenize }) => {
     cursor.current.scrollTop = scroll.y;
   }, [scroll.x, scroll.y]);
 
-  const tokens = tokenize(value);
+  const tokens = useMemo(() => tokenize(value), [tokenize, value]);
 
   return (
     <div className="CodeEditor">
