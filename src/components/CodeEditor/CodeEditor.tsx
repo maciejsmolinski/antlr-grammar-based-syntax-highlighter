@@ -41,10 +41,10 @@ type Action =
 type Actions = Action['type'];
 
 // @TODO: Expose editing utils, e.g. insertAt, replaceAt, etc.
-const useEditorReducer = function <T>(
-  initialState: T
-): [T, Record<Actions, any>] {
-  const reducer = (state: T, action: Action) => {
+const useEditorReducer = function (
+  initialState: EditorState
+): [EditorState, Record<Actions, any>] {
+  const reducer = (state: EditorState, action: Action): EditorState => {
     switch (action.type) {
       case 'setCursorPosition':
         return { ...state, pos: action.payload };
@@ -81,7 +81,7 @@ const CodeEditor: FC<ComponentProps> = ({ code, tokenize }) => {
   const output = useRef<HTMLDivElement | null>(null);
   const cursor = useRef<HTMLDivElement | null>(null);
 
-  const [editorState, actions] = useEditorReducer<EditorState>({
+  const [editorState, actions] = useEditorReducer({
     value: code || '',
     line: 0,
     pos: 0,
