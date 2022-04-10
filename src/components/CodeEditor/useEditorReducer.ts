@@ -14,9 +14,7 @@ type ActionsAPI = {
   [k in keyof ActionPayloads]: (value: ActionPayloads[k]) => void;
 };
 
-const useEditorReducer = (
-  initialState: EditorState
-): [EditorState, ActionsAPI] => {
+const useEditorReducer = (initialState: EditorState) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const actions: ActionsAPI = {
@@ -26,7 +24,7 @@ const useEditorReducer = (
       dispatch({ type: 'setValue', payload: code || '' }),
   };
 
-  return [state, actions];
+  return [state, actions] as const;
 };
 
 function reducer(state: EditorState, action: Actions): EditorState {
