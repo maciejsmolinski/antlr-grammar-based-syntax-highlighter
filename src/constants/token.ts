@@ -1,6 +1,10 @@
 import { TokenType } from '../types';
 
-export const TOKEN_TYPES: Record<Uppercase<TokenType>, TokenType> = {
+type TokenTypesMapping = {
+  [k in TokenType as Uppercase<k>]: k;
+};
+
+export const TOKEN_TYPES: TokenTypesMapping = {
   NONE: 'none',
   RAW: 'raw',
   IDENTIFIER: 'identifier',
