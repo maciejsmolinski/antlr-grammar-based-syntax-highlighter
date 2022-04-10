@@ -1,17 +1,14 @@
 import { useReducer } from 'react';
 import { EditorState } from './types';
 
-interface ActionPayloads {
-  setCursorPosition: number;
-  setValue: string;
-}
-
-type Actions = {
-  [k in keyof ActionPayloads]: { type: k; payload: ActionPayloads[k] };
-}[keyof ActionPayloads];
+type Actions =
+  | { type: 'setCursorPosition'; payload: number }
+  | { type: 'setValue'; payload: string };
 
 type ActionsAPI = {
-  [k in keyof ActionPayloads]: (value: ActionPayloads[k]) => void;
+  [k in Actions as k['type']]: k extends { payload: any }
+    ? (value: k['payload']) => void
+    : () => void;
 };
 
 const useEditorReducer = (initialState: EditorState) => {
