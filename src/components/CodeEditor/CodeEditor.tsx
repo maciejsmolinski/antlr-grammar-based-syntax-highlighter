@@ -1,8 +1,9 @@
 import './styles.css';
-import { useState, useReducer, useRef, useEffect, FC, useMemo } from 'react';
+import { useState, useRef, useEffect, FC, useMemo } from 'react';
 import TokenComponent from '../Token';
 import { Token as GenericToken, Tokenizer } from '../../types';
 import { TOKEN_TYPES } from '../../constants';
+import useEditorReducer from './useEditorReducer'
 
 function renderToken({ text, type }: GenericToken, index?: number) {
   return <TokenComponent text={text} type={type} key={text + index} />;
@@ -18,54 +19,12 @@ function renderChar(char: string, index: number, active: boolean) {
 
 type ComponentProps = { code: string; tokenize: Tokenizer };
 
-type EditorState = {
-  line: number;
-  pos: number;
-  value: string;
-};
-
 // type ViewState = {
 //   x: number;
 //   y: number;
 //   scrollX: number;
 //   scrollY: number;
 // };
-
-type Action =
-  | {
-      type: 'setCursorPosition';
-      payload: number;
-    }
-  | { type: 'setValue'; payload: string };
-
-type Actions = Action['type'];
-
-// @TODO: Expose editing utils, e.g. insertAt, replaceAt, etc.
-const useEditorReducer = function (
-  initialState: EditorState
-): [EditorState, Record<Actions, any>] {
-  const reducer = (state: EditorState, action: Action): EditorState => {
-    switch (action.type) {
-      case 'setCursorPosition':
-        return { ...state, pos: action.payload };
-      case 'setValue':
-        return { ...state, value: action.payload };
-      default:
-        return state;
-    }
-  };
-
-  const [state, dispatch] = useReducer(reducer, initialState);
-
-  const actions = {
-    setCursorPosition: (x: number) =>
-      dispatch({ type: 'setCursorPosition', payload: x }),
-    setValue: (code: string) =>
-      dispatch({ type: 'setValue', payload: code || '' }),
-  };
-
-  return [state, actions];
-};
 
 // const useViewState = function (initialState?: Partial<ViewState>) {
 //   const defaultState = { x: 0, y: 0 };
