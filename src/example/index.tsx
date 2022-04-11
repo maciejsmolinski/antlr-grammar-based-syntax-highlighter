@@ -2,11 +2,7 @@ import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 import LangEditor from './LangEditor';
 
-const code = `defun inspect value {
-  call logger '[DEBUG]', value
-}
-
-call inspect 1340`;
+const code = `<strong>Some Text</strong>`;
 
 ReactDOM.render(
   <StrictMode>
