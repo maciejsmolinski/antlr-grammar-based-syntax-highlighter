@@ -6,4 +6,8 @@ export type TokenType =
   | 'keyword'
   | 'brace';
 
-export type Token = { text: string; type: TokenType };
+export interface Token {
+  text: string;
+  line: number;
+  type: TokenType;
+}
