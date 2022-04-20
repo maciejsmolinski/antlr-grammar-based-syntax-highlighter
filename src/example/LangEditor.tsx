@@ -53,7 +53,7 @@ const withSubstitution: typeof makeTokenizeFn = (...args) => {
           all.push({
             ...i,
             text:
-              i?.line < array[idx + 1].line
+              array[idx + 1] && i?.line < array[idx + 1]!.line
                 ? ':\n' + indent.repeat(indentation)
                 : ': ',
           });

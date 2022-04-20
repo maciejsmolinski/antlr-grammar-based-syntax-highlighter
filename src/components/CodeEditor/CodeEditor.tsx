@@ -97,11 +97,11 @@ const CodeEditor: FC<ComponentProps> = ({ code, tokenize }) => {
         />
         <div ref={output} className="CodeEditor__output">
           {tokens.map(renderToken)}
-          {tokens.length && tokens[tokens.length - 1].text.endsWith('\n')
+          {tokens.length && tokens[tokens.length - 1]!.text.endsWith('\n')
             ? renderToken({
                 text: '\n',
                 type: TOKEN_TYPES.NONE,
-                line: tokens[tokens.length - 1]?.line + 1,
+                line: tokens[tokens.length - 1]!.line + 1,
               })
             : null}
         </div>
