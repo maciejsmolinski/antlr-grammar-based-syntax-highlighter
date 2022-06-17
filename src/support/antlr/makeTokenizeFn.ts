@@ -7,7 +7,11 @@ import {
 } from '../../types';
 
 type AntlrTokenType = number;
-type AntlrToken = { text: string; type: AntlrTokenType };
+interface AntlrToken {
+  text: string;
+  line: number;
+  type: AntlrTokenType;
+}
 
 const makeTokenizeFn = (
   LexerClass: Lexer,
@@ -17,10 +21,13 @@ const makeTokenizeFn = (
     const input = new antlr.InputStream(text);
     const lexer = new LexerClass(input);
 
-    const tokens = lexer.getAllTokens().map(({ text, type }: AntlrToken) => ({
-      text,
-      type: tokenMapping.get(type) || TOKEN_TYPES.NONE,
-    }));
+    const tokens = lexer
+      .getAllTokens()
+      .map(({ text, line, type }: AntlrToken) => ({
+        text,
+        line,
+        type: tokenMapping.get(type) || TOKEN_TYPES.NONE,
+      }));
 
     return tokens;
   };

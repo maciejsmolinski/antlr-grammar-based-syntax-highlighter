@@ -6,18 +6,19 @@
   "main": "src/index.js",
   "dependencies": {
     "@popperjs/core": "^2.10.2",
-    "antlr4": "4.9.2",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "antlr4": "^4.7.2",
+    "antlr4-parsers": "^1.0.20",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-popper": "^2.2.5"
   },
   "devDependencies": {
     "@babel/runtime": "7.13.8",
     "@types/antlr4": "^4.7.2",
-    "@types/react": "^17.0.9",
-    "@types/react-dom": "^17.0.6",
+    "@types/react": "^17.0.44",
+    "@types/react-dom": "^17.0.15",
     "react-scripts": "^4.0.3",
-    "typescript": "^4.6"
+    "typescript": "^4.6.3"
   },
   "scripts": {
     "start": "BROWSER=none react-scripts start",

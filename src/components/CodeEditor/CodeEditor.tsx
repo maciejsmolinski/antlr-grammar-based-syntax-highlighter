@@ -3,10 +3,12 @@ import { useState, useRef, useEffect, FC, useMemo } from 'react';
 import TokenComponent from '../Token';
 import { Token as GenericToken, Tokenizer } from '../../types';
 import { TOKEN_TYPES } from '../../constants';
-import useEditorReducer from './useEditorReducer'
+import useEditorReducer from './useEditorReducer';
 
-function renderToken({ text, type }: GenericToken, index?: number) {
-  return <TokenComponent text={text} type={type} key={text + index} />;
+function renderToken({ text, line, type }: GenericToken, index?: number) {
+  return (
+    <TokenComponent text={text} line={line} type={type} key={text + index} />
+  );
 }
 
 function renderChar(char: string, index: number, active: boolean) {
@@ -95,8 +97,12 @@ const CodeEditor: FC<ComponentProps> = ({ code, tokenize }) => {
         />
         <div ref={output} className="CodeEditor__output">
           {tokens.map(renderToken)}
-          {tokens.length && tokens[tokens.length - 1].text.endsWith('\n')
-            ? renderToken({ text: '\n', type: TOKEN_TYPES.NONE })
+          {tokens.length && tokens[tokens.length - 1]!.text.endsWith('\n')
+            ? renderToken({
+                text: '\n',
+                type: TOKEN_TYPES.NONE,
+                line: tokens[tokens.length - 1]!.line + 1,
+              })
             : null}
         </div>
         <div ref={cursor} className="CodeEditor__cursor">
